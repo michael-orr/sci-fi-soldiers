@@ -23,7 +23,7 @@ router.get("/", async (req, res) => {
     if (req.session.isLoggedIn) {
       user = await User.findByPk(req.session.userId, {
         exclude: ["password"],
-        raw: true,
+        raw: true
       });
     }
     res.render("home", {
@@ -43,6 +43,14 @@ router.get("/login", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup", { title: "Sign-Up Page" });
+});
+
+router.get("/professionalsignup", async (req, res) => {
+  const servicesData = await Services.findAll();
+  const services = servicesData.map((services) =>
+  services.get({ plain: true })
+  );
+  res.render("professionalsignup", { services, title: "Professional Sign-Up Page" });
 });
 
 router.get("/professionals/:prof_id", async (req, res) => {

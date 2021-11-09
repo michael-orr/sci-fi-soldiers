@@ -1,4 +1,4 @@
-const { User, Goal, Comment, Post } = require("../models");
+const { User, Goal, Comment, Post, Professional, ProfessionalServices } = require("../models");
 const withAuth = require("../util/withAuth");
 
 const router = require("express").Router();
@@ -20,8 +20,38 @@ router.post("/users", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Internal server error." });
-  }
+  };
 });
+
+// POST /api/pro-users 			create user, client or profession and login
+router.post("/pro-users", async (req, res) => {
+  const { username, password } = req.body;
+  console.log(req.body)
+  console.log(req.body.professional.calendly)
+  try {
+    const user = await User.create(req.body, { username, password });
+    req.session.isLoggedIn = true;
+    req.session.userId = user.id;
+    req.session.save((err) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Internal server error." });
+      }
+      res.json({ user });
+    });
+    const pro = await Professional.create({
+      "user_id": user.id,
+      "calendly": req.body.professional.calendly,
+      "bio": req.body.professional.bio
+    });
+    res.json({ pro, user })
+    console.log(pro, user) 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error." });
+  };
+});
+
 
 router.post("/users/login", async (req, res) => {
   const { username, password } = req.body;

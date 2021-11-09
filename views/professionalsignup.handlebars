@@ -1,17 +1,28 @@
-<form class="signup-inner--form">
-<input type="text" class="single-field" id="name-input-signup" placeholder="Name">
-<input type="text" class="single-field" id='age-input-signup' placeholder="Age">
-<input type="text" class="single-field" id='email-input-signup' placeholder="Email">
-<input type="password" class="single-field" id='password-input-signup' placeholder="Password">
-<input type="text" class="single-field" id="location-input-signup" placeholder="Location">
-<select class="nice-select" name="sortby" id="profession-input-signup">
-<option value="">Profession</option>
-<option value="Yoga Instructor">Yoga Instructor</option>
-<option value="Trainer">Trainer</option>
-<option value="Physical Therapist">Physical Therapist</option>
-<option value="Massage Therapist">Massage Therapist</option>
-<option value="Stretch Therapist">Stretch Therapist</option>
-</select>
+<form class="prof-signup-form">
+<p><input type="text" name='username'id='username' placeholder="Username"></p>
+<p><input type="password"  name='password' id='password' placeholder="Password"></p>
+<p><input type="password" name='confirm-password' id='confirm-password' placeholder="Confirm Password"></p>
+<p><input type="text" name='first-name' id="first-name" placeholder="First Name"></p>
+<p><input type="text" name='last-name' id="last-name" placeholder="Last Name"></p>
+<p><input type="text" name='email' id='email' placeholder="Email"></p>
+<p><input type="text" name='city' id="city" placeholder="City"></p>
+<p><input type="text" name='state' id="state" placeholder="State"></p>
+<p><input type="text" name='zip' id="zip" placeholder="Zipcode"></p>
+<p><input type="text" name='calendly' id="calendly" placeholder="Calendly Link"></p>
+<p><input type="text" name='bio' id="bio" placeholder="Tell us about yourself."></p>
+<p><input type="hidden" name='role-id' id="role-id" value="1"></p>
+<p>Services Offered</p>
+{{#each services}}
+<input type="checkbox" id={{name}} name={{name}} value={{id}}>
+<label for={{name}}>{{name}}</label><br>
+{{/each}}
+
+
+
+
 <button class="submit-btn" id='signup-btn'>Create Account</button>
-<h6 class="terms-condition">Are you a <a href="/clientsignup">Client?</a></h6>
+<h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
 </form>
+
+<script src='/js/professionalSignup.js'></script>
+

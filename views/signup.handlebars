@@ -1,16 +1,16 @@
-<form class="signup-inner--form">
-<input type="text" class="single-field" id="name-input-signup" placeholder="Name">
-<input type="text" class="single-field" id='age-input-signup' placeholder="Age">
-<input type="text" class="single-field" id='username-input-signup' placeholder="Username">
-<input type="password" class="single-field" id='signup-btn' placeholder="Password">
-<input type="text" class="single-field" id="city-input-signup" placeholder="City">
-<input type="text" class="single-field" id="State-input-signup"placeholder="State">
-<input type="text" class="single-field" id="zip-input-signup"placeholder="Zipcode">
-<select class="nice-select"  id="professional-input-signup" name="sortby">
-<option value="">Are you a Professional or Client?</option>
-<option value="professional">Professional</option>
-<option value="client">Client</option>
-</select>
+<form class="signup-form">
+<p><input type="text" id='username' placeholder="Username"></p>
+<p><input type="password"  id='password' placeholder="Password"></p>
+<p><input type="password" id='confirm-password' placeholder="Confirm Password"></p>
+<p><input type="text" id="first-name" placeholder="First Name"></p>
+<p><input type="text" id="last-name" placeholder="Last Name"></p>
+<p><input type="text" id='email' placeholder="Email"></p>
+<p><input type="text"  id="city" placeholder="City"></p>
+<p><input type="text" id="state"placeholder="State"></p>
+<p><input type="text" class="single-field" id="zip" placeholder="Zipcode"></p>
+<p><input type="hidden" id="role-id" value="1"></p>
 <button class="submit-btn" id='signup-btn'>Create Account</button>
 <h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
 </form>
+
+<script src='/js/signup.js'></script>

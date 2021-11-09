@@ -23,7 +23,6 @@ const handleLoginSubmit = async (event) => {
       return;
     }
 
-    // go to home page
     window.location.replace('/');
   } catch (error) {
     console.log(error);

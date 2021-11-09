@@ -1,90 +1,15 @@
-</head>
-
-<body class="bg-transparent">
-
-    <main>
-        <div class="main-wrapper pb-0 mb-0">
-            <div class="timeline-wrapper">
-                <div class="timeline-header">
-                    <div class="container-fluid p-0">
-                        <div class="row g-0 align-items-center">
-                            <div class="col-lg-6">
-                                <div class="timeline-logo-area d-flex align-items-center">
-                                    <div class="timeline-tagline">
-                                        <nav>
-                                            <ul>
-                                                <li class="active"><a href="/">Home</a></li>
-                                        </a>
-                                    </div>
-                                    <div class="timeline-tagline">
-                                        <h6 class="tagline">Find instructors.
-                                            Achieve your goals.
-                                            All in one place.</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-page-wrapper">
-                    <div class="container-fluid p-0">
-                        <div class="row g-0">
-                            <div class="col-lg-6 order-2 order-lg-1">
-                                <div class="timeline-bg-content bg-img" data-bg="assets/images/timeline/adda-timeline.jpg">
-                                    <h3 class="timeline-bg-title">Find instructors.
-                                        Achieve your goals.
-                                        All in one place.</h3>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center">
-                                <div class="signup-form-wrapper">
-                                    <h1 class="create-acc text-center">Create An Account</h1>
-                                    <div class="signup-inner text-center">
-                                        <h3 class="title">Welcome to Body Connect</h3>
-                                        <form class="signup-inner--form">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <input type="text" class="single-field" id="name-input-signup" placeholder="Name">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input type="text" class="single-field" id='age-input-signup' placeholder="Age">
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <input type="text" class="single-field" id='username-input-signup' placeholder="Username">
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="password" class="single-field" id='signup-btn' placeholder="Password">
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" class="single-field" id="city-input-signup" placeholder="City">
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" class="single-field" id="State-input-signup"placeholder="State">
-                                                </div>
-                                                <div class="col-12">
-                                                    <input type="text" class="single-field" id="zip-input-signup"placeholder="Zipcode">
-                                                </div>
-                                                <div class="col-12">
-                                                    <select class="nice-select"  id="professional-input-signup" name="sortby">
-                                                        <option value="">Are you a Professional or Client?</option>
-                                                        <option value="professional">Professional</option>
-                                                        <option value="Client">Client</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <div class="col-12">
-                                                    <button class="submit-btn" id='signup-btn'>Create Account</button>
-                                                </div>
-                                                <h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<form class="signup-inner--form">
+<p><input type="text" class="single-field" id="first-name" placeholder="First Name"></p>
+<p><input type="text" class="single-field" id="last-name" placeholder="Last Name"></p>
+<p><input type="text" class="single-field" id='username' placeholder="Username"></p>
+<p><input type="password" class="single-field" id='password' placeholder="Password"></p>
+<p><input type="password" class="single-field" id='confirm-password' placeholder="Password"></p>
+<p><input type="text" class="single-field" id="city" placeholder="City"></p>
+<p><input type="text" class="single-field" id="state"placeholder="State"></p>
+<p><input type="text" class="single-field" id="zip" placeholder="Zipcode"></p>
+<p><input type="hidden" id="role-id" value="client"></p>
+<button class="submit-btn" id='signup-btn'>Create Account</button>
+<h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
+</form>
 
 <script src='/js/clientsignup.js'></script>
