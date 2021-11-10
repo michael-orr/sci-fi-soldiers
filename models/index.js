@@ -175,7 +175,8 @@ Role.hasMany(User, {
 Professional.belongsToMany(Services, {
   through: {
     model: ProfessionalServices,
-    unique: false
+    unique: false,
+    foreignKey: "professional_id"
   },
   as: "professional_service"
 });
@@ -183,7 +184,8 @@ Professional.belongsToMany(Services, {
 Services.belongsToMany(Professional, {
   through: {
     model: ProfessionalServices,
-    unique: false
+    unique: false,
+    foreignKey: "services_id"
   },
   as: "services_professional"
 });

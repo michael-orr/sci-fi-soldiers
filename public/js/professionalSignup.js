@@ -14,6 +14,12 @@ const handleSignupSubmit = async (event) => {
     const role_id = document.querySelector('#role-id').value.trim();
     const username = document.querySelector('#username').value.trim();
     const password = document.querySelector('#password').value.trim();
+    const service = document.getElementsByClassName('service');
+    const services = [];
+    for (let i=0; i<service.length; i++) {
+      if (service[i].checked === true)
+      services.push(service[i].value);
+    }
     const confirmPassword = document
       .querySelector('#confirm-password')
       .value.trim();
@@ -27,7 +33,7 @@ const handleSignupSubmit = async (event) => {
       alert('Passwords to not match.');
       return;
     }
-
+    
     const response = await fetch('/api/pro-users', {
       method: 'POST',
       body: JSON.stringify({ 
@@ -42,7 +48,10 @@ const handleSignupSubmit = async (event) => {
         "role_id": role_id,
         "professional": {
             "calendly": calendly,
-            "bio": bio
+            "bio": bio,
+            "professional_services": [
+              ...services
+            ]
           }
         }),
       headers: {
@@ -52,8 +61,6 @@ const handleSignupSubmit = async (event) => {
 
     if (response.ok) {
       const json = await response.json();
-      console.log(json);
-      console.log(json.pro.id);
       window.location.replace(`/professionals/${json.pro.id}`);
       
     } else {
