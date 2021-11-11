@@ -1,9 +1,17 @@
 
-<form class="signup-inner--form">
-<input type="text" class="single-field" id="username" placeholder="Username">
-<input type="text" class="single-field" id='password' placeholder="Password">
-<button class='btn' type='submit'>Sign in</button>
-<h6 class="terms-condition">Are you <a href="/signup">Creating an account?</a></h6>
-</form>
+    <form class="form-signin signup-inner--form">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="username" class="sr-only">Username</label>
+      <input type="text" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="password" class="form-control" placeholder="Password" required="">
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <p class="mt-5 mb-3 text-muted">© 2021</p>
+    </form>
                                     
 <script src='/js/login.js'></script>

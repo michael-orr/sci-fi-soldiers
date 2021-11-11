@@ -38,7 +38,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login", { title: "Log-In Page" });
+  res.render("login", { title: "Log-In Page", layout:"centered.handlebars" });
 });
 
 router.get("/signup", (req, res) => {
@@ -50,20 +50,15 @@ router.get("/professionalsignup", async (req, res) => {
   const services = servicesData.map((services) =>
   services.get({ plain: true })
   );
-  res.render("professionalsignup", { services, title: "Professional Sign-Up Page" });
+  res.render("professionalsignup", { services, title: "Professional Sign-Up Page", layout: 'formpage.handlebars' });
 });
 
-router.get("/professionals/:prof_id", async (req, res) => {
-  try {
-    const professionalData = await Professional.findByPk(req.params.prof_id, {
-      include: [User, { model: ProfessionalServices, include: Services }],
-    });
-    const professional = professionalData.get({ plain: true });
-    console.log(JSON.stringify(professional, null, 2));
-    res.render("professionalprofile", professional);
-  } catch (err) {
-    res.status(500).json(err);
-  }
+router.get("/clientsignup", async (req, res) => {
+  const servicesData = await Services.findAll();
+  const services = servicesData.map((services) =>
+  services.get({ plain: true })
+  );
+  res.render("clientsignup", { services, title: "Client Sign-Up Page", layout:"formpage.handlebars" });
 });
 
 router.get("/professionals", async (req, res) => {
@@ -176,6 +171,7 @@ router.get("/client/:client_id", withAuth, async (req, res) => {
     });
 
     const client = clientData.get({ plain: true });
+    console.log("THIS IS FROM HOME-ROUTER",client)
     res.render("clientprofile", { client });
   } catch (err) {
     res.status(500).json(err);

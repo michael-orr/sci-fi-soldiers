@@ -1,28 +1,168 @@
-<form class="prof-signup-form">
-<p><input type="text" name='username'id='username' placeholder="Username"></p>
-<p><input type="password"  name='password' id='password' placeholder="Password"></p>
-<p><input type="password" name='confirm-password' id='confirm-password' placeholder="Confirm Password"></p>
-<p><input type="text" name='first-name' id="first-name" placeholder="First Name"></p>
-<p><input type="text" name='last-name' id="last-name" placeholder="Last Name"></p>
-<p><input type="text" name='email' id='email' placeholder="Email"></p>
-<p><input type="text" name='city' id="city" placeholder="City"></p>
-<p><input type="text" name='state' id="state" placeholder="State"></p>
-<p><input type="text" name='zip' id="zip" placeholder="Zipcode"></p>
-<p><input type="text" name='calendly' id="calendly" placeholder="Calendly Link"></p>
-<p><input type="text" name='bio' id="bio" placeholder="Tell us about yourself."></p>
-<p><input type="hidden" name='role-id' id="role-id" value="1"></p>
-<p>Services Offered</p>
-{{#each services}}
-<input type="checkbox" class="service" id={{name}} name={{name}} value={{id}}>
-<label for={{name}}>{{name}}</label><br>
-{{/each}}
+{{!-- <div class="container">
+  <form class="prof-signup-form">
+    <p><input type="text" name='username'id='username' placeholder="Username"></p>
+    <p><input type="password"  name='password' id='password' placeholder="Password"></p>
+    <p><input type="password" name='confirm-password' id='confirm-password' placeholder="Confirm Password"></p>
+    <p><input type="text" name='first-name' id="first-name" placeholder="First Name"></p>
+    <p><input type="text" name='last-name' id="last-name" placeholder="Last Name"></p>
+    <p><input type="text" name='email' id='email' placeholder="Email"></p>
+    <p><input type="text" name='city' id="city" placeholder="City"></p>
+    <p><input type="text" name='state' id="state" placeholder="State"></p>
+    <p><input type="text" name='zip' id="zip" placeholder="Zipcode"></p> --}}
+    {{!-- <p><input type="text" name='calendly' id="calendly" placeholder="Calendly Link"></p>
+    <p><input type="text" name='bio' id="bio" placeholder="Tell us about yourself."></p> --}}
+    {{!-- <p><input type="hidden" name='role-id' id="role-id" value="1"></p> --}}
+    {{!-- <p>Services Offered</p>
+    {{#each services}}
+    <input type="checkbox" class="service" id={{name}} name={{name}} value={{id}}>
+    <label for={{name}}>{{name}}</label><br>
+    {{/each}}
+    <button class="submit-btn" id='signup-btn'>Create Account</button>
+    <h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
+  </form>
+</div> --}}
+<div class="container">
+  <div class="py-5 text-center">
+    <img class="d-block mx-auto mb-4" src="/images/book-fitness-logo.png" alt="" width="180" height="180">
+    <h2>Professional Signup Page</h2>
+    <p class="lead">You are a professional and you need to sign up. This will be the best business decision you have ever made, we promise.</p>
+  </div>
+  <div class="col-md order-md-1">
+    <h4 class="mb-3">Professional Info</h4>
+    <form class="needs-validation prof-signup-form" novalidate="">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="first-name">First name</label>
+          <input type="text" class="form-control" id="first-name" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Valid first name is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="last-name">Last name</label>
+          <input type="text" class="form-control" id="last-name" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Valid last name is required.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="username">Username</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="username" placeholder="Username" required="">
+          <div class="invalid-feedback" style="width: 100%;">
+            Your username is required.
+          </div>
+        </div>
+      </div>
+      <p><input type="hidden" name='role-id' id="role-id" value="1"></p>
+      <div class="mb-3">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" placeholder="you@example.com" required="">
+        <div class="invalid-feedback">
+          Please enter a valid email address for shipping updates.
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Password first name is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" class="form-control" id="confirm-password" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Please re-enter the password.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mb-3">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city">
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="state">State</label>
+          <select class="custom-select d-block w-100" id="state" required="">
+            <option value="">Choose...</option>
+            <option>California</option>
+          </select>
+          <div class="invalid-feedback">
+            Please provide a valid state.
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="zip">Zip</label>
+          <input type="text" class="form-control" id="zip" placeholder="" required="">
+          <div class="invalid-feedback">
+            Zip code required.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="bio">Tell us about yourself</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="bio" placeholder="Bio" required="">
+          <div class="invalid-feedback" style="width: 100%;">
+            Your bio is required.
+          </div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="calendly">Your Calendly Link</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="calendly" placeholder="Calendly" required="">
+          <div class="invalid-feedback" style="width: 100%;">
+            Your calendly link is required.
+          </div>
+        </div>
+      </div>
+      <hr class="mb-4">
+      <h4>Services Offered:</h4>
+      {{#each services}}
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input service" id="{{name}}" name="{{name}}" value="{{id}}">
+        <label class="custom-control-label" for="{{name}}">{{name}}</label>
+      </div>
+      {{/each}}
+      <hr class="mb-4">
+
+
+
+      <h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
+      <hr class="mb-4">
+      <button class="btn btn-primary btn-lg btn-block submit-btn" id="signup-btn" type="submit">Create Account</button>
+  </div>
+
+
+  </form>
+</div>
+</div>
+
+<footer class="my-5 pt-5 text-muted text-center text-small">
+  <p class="mb-1">© 2021 Sci-Fi Soldiers</p>
+  <ul class="list-inline">
+    <li class="list-inline-item"><a href="#">Privacy</a></li>
+    <li class="list-inline-item"><a href="#">Terms</a></li>
+    <li class="list-inline-item"><a href="#">Support</a></li>
+  </ul>
+</footer>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.8/holder.min.js"
+  integrity="sha512-O6R6IBONpEcZVYJAmSC+20vdsM07uFuGjFf0n/Zthm8sOFW+lAq/OK1WOL8vk93GBDxtMIy6ocbj6lduyeLuqQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
 
-<button class="submit-btn" id='signup-btn'>Create Account</button>
-<h6 class="terms-condition">Are you <a href="/login">Signing in?</a></h6>
-</form>
 
 <script src='/js/professionalSignup.js'></script>
 
