@@ -1,4 +1,4 @@
-{{#if isLoggedIn}}
+{{!-- {{#if isLoggedIn}}
   <h2>Welcome, {{user.username}}!</h2>
   <p>Your id is <strong>{{user.id}}</strong>.</p>
 <p>You should have ended up on your <a href="/client/{{user.id}}">Profile Page</a></p>
@@ -8,5 +8,50 @@
 
 {{#unless isLoggedIn}}
   <br />
-{{/unless}}
+{{/unless}} --}}
+<main>
+  <div class="container">
+  <div class="p-5 mb-4 bg-light rounded-3 bg-home-main">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Book Fitness</h1>
+        <p class="col-md-8">Find professional trainers that match the workout types you enjoy. Set fitness goals, track the goals with your trainer and schedule appointements as needed.</p>
+        <button id="startButton" class="btn btn-primary btn-lg" type="button">Get Started</button>
+      </div>
+    </div>
+  </div>
 
+  <div class="container marketing">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2>Browse Professionals</h2>
+          <p>Look at our list of professional trainers and find the one that fits your goals, location and schedule.</p>
+          <button id="profButton" class="btn btn-outline-light" type="button">Search Now</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          <h2>Set A Goal</h2>
+          <p>Book fitness and track your goals along with your trainer.  It's as easy as selecting a goal type, selecting the professional you want to work with and answering a few simple questions.</p>
+          <button id="goalButton" class="btn btn-outline-secondary" type="button">Login to Start A New Goal</button>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.container -->
+  <!-- FOOTER -->
+  <footer class="container">
+    <p>© 2021 Sci Fi Soldier · <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="/login">Professional Login</a> · <a href="/professionalsignup">Professional Signup</a></p>
+  </footer>
+</main>
+
+<script type="text/javascript">
+    document.getElementById("startButton").onclick = function () {
+        location.href = "/clientsignup";
+    };
+    document.getElementById("profButton").onclick = function () {
+        location.href = "/professionals";
+    };
+        document.getElementById("goalButton").onclick = function () {
+        location.href = "/login";
+    };
+</script>
