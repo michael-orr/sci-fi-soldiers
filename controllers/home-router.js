@@ -17,6 +17,8 @@ const {
 // use withAuth middleware to redirect from protected routes.
 const withAuth = require("../util/withAuth");
 
+
+//home
 router.get("/", async (req, res) => {
   try {
     let user;
@@ -37,6 +39,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//login
 router.get("/login", (req, res) => {
   res.render("login", { title: "Log-In Page", layout:"centered.handlebars" });
 });
@@ -45,6 +48,8 @@ router.get("/signup", (req, res) => {
   res.render("signup", { title: "Sign-Up Page" });
 });
 
+
+//professional sign up page
 router.get("/professionalsignup", async (req, res) => {
   const servicesData = await Services.findAll();
   const services = servicesData.map((services) =>
@@ -53,6 +58,7 @@ router.get("/professionalsignup", async (req, res) => {
   res.render("professionalsignup", { services, title: "Professional Sign-Up Page", layout: 'formpage.handlebars' });
 });
 
+//client sign up page
 router.get("/clientsignup", async (req, res) => {
   const servicesData = await Services.findAll();
   const services = servicesData.map((services) =>
@@ -61,6 +67,7 @@ router.get("/clientsignup", async (req, res) => {
   res.render("clientsignup", { services, title: "Client Sign-Up Page", layout:"formpage.handlebars" });
 });
 
+//list of professionals
 router.get("/professionals", async (req, res) => {
   const professionalData = await Professional.findAll({
     include: [User, { model: ProfessionalServices, include: Services }],
@@ -68,10 +75,10 @@ router.get("/professionals", async (req, res) => {
   const professionals = professionalData.map((professionals) =>
     professionals.get({ plain: true })
   );
-  res.render("professionals", { professionals });
+  res.render("professionals", { professionals, title: "Choose a Professional" });
 });
 
-// GET 	/dashboard		auth	dashboard for logged in  for professionals
+// professional dashboard
 router.get("/dashboard/:prof_id", withAuth, async (req, res) => {
   try {
     const professionalData = await Professional.findByPk(req.params.prof_id, {
@@ -89,14 +96,36 @@ router.get("/dashboard/:prof_id", withAuth, async (req, res) => {
       ],
     });
     const professional = professionalData.get({ plain: true });
+    console.log("This is from HOME ROUTER", professional)
     res.render("dashboard", professional);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET 	/new-goal/?clientid={{id}}		auth	Form to allow a client to add a goal. Must be logged
-// GET 	/new-goal?		auth	Form to allow a client to add a goal. Must be logged
+//professional-profile
+router.get("/professionals/:prof_id", async (req, res) => {
+  try {
+    const professionalData = await Professional.findByPk(req.params.prof_id, {
+      include: [
+        User,
+        { model: ProfessionalServices, include: Services },
+      ],
+    });
+    const professional = professionalData.get({ plain: true });
+    console.log("This is from HOME ROUTER", professional)
+    res.render("professionalprofile", { 
+       professional,
+       title: professional.user.username,
+      layout: "profile.handlebars"});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+// new-goal page
 router.get("/new-goal/:client_id", withAuth, async (req, res) => {
   try {
     const clientData = await Client.findByPk(req.params.client_id, {
@@ -171,8 +200,8 @@ router.get("/client/:client_id", withAuth, async (req, res) => {
     });
 
     const client = clientData.get({ plain: true });
-    console.log("THIS IS FROM HOME-ROUTER",client)
-    res.render("clientprofile", { client });
+    
+    res.render("clientprofile", { client, layout:"profile.handlebars" });
   } catch (err) {
     res.status(500).json(err);
   }

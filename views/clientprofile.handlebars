@@ -1,21 +1,101 @@
-
-<h1>Client Profile</h1>
-{{!-- Client Info --}}
-<p>Client ID: {{client.id}} </p>
-{{!-- User Info --}}
-<p>First Name: {{client.user.first_name}}</p>
-<p>Last Name: {{client.user.last_name}}</p>
-<p>Username: {{client.user.username}}</p>
-<p>City: {{client.user.city}}</p>
-<p>State: {{client.user.state}}</p>
-{{!-- UserServices Info, Joined To Services --}}
-<p>Interested In: {{#each client.client_services}}</p>
-{{service.name}}
-{{/each}}
-{{!--  Goal Info --}}
-<h2>Goals</h2>
-{{#each client.goals}}
-<p>Goal Name: <a href="/goals/{{id}}">{{name}}</a></p>
-<p>Associated Pro: {{professional.user.first_name}} {{professional.user.last_name}}</p>
-<p>{{goal_type.status}}: {{posts.[0].post_question_answers.[0].answer}}</p>
-{{/each}}
+<div class="container main-secction">
+    <div class="row ">
+        <div class="col-md-12 col-sm-12 col-xs-12 image-section">
+            <img src="/images/llinkedinbackground.jpg">
+        </div>
+        <div class="row  user-left-part">
+            <div class="col-md-4 col-sm-4 col-xs-12 user-profil-part pull-left">
+                <div class="row">
+                    <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
+                        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png"
+                            class="rounded-circle">
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1">
+                        <div class="row">
+                            <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact"
+                                class="btn btn-success btn-block follow">Set A New Goal</button>
+                        </div>
+                        <div class="row profile-right-section-row">
+                            <div class="col-md-12 profile-header">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 profile-header-section1 pull-left">
+                                        <h1>{{client.user.first_name}} {{client.user.last_name}}</h1>
+                                        <h5>{{client.user.city}}, {{client.user.state}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Client ID:</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p>{{client.id}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Username:</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p>{{client.user.username}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <label>Email:</label>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <p>{{client.user.email}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Interests:</p>
+                                            </div>
+                                        </div>
+                                        {{#each client.client_services}}
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p>{{service.name}}</p>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12 pull-right profile-right-section">
+                <div class="row profile-right-section-row">
+                    <div class="col-md-12 profile-header">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 profile-header-section1 pull-left">
+                                <h1 class="goals-header">Goals</h1>
+                            </div>
+                        </div>
+                    </div>
+                    {{#each client.goals}}
+                    <div class="col-md-12">
+                        <div class="card" style="width: 32rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/goals/{{id}}">{{name}}</a></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{goal_type.name}}
+                                    {{professional.user.last_name}}</h6>
+                                <p class="card-text">{{goal_type.status}}:
+                                    {{posts.[0].post_question_answers.[0].answer}}</p>
+                                <a href="/professionals/{{professional.id}}" class="card-link">Pro:
+                                    {{professional.user.first_name}} {{professional.user.last_name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

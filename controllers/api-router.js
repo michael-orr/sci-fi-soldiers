@@ -43,7 +43,7 @@ router.post("/pro-users", async (req, res) => {
     });
     services.push(service);
   };
-    
+  console.log("THIS IS FROM API ROUTER",req.body)
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
     req.session.save((err) => {
@@ -70,7 +70,6 @@ router.post("/client-users", async (req, res) => {
     });
 
     const servicesData = req.body.client.client_services
-    console.log("THIS IS FROM API-ROUTER", servicesData)
     const services = []
     for (let i=0; i<servicesData.length; i++){
     const service = await ClientServices.create({

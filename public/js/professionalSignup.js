@@ -1,5 +1,3 @@
-
-// Validate user input and send login request
 const handleSignupSubmit = async (event) => {
   event.preventDefault();
   try {
