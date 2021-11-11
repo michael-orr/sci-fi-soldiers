@@ -1,17 +1,17 @@
 [
   {
     "user_id": "1",
-    "calendly": "https://calendly.com/yourname",
+    "calendly": "https://calendly.com/mikeorr-developer/60min",
     "bio": "I have been training people for years and I'm the best."
   },
   {
     "user_id": "3",
-    "calendly": "https://calendly.com/hisname",
+    "calendly": "https://calendly.com/mikeorr-developer/60min",
     "bio": "I love fitness and will make you love it too."
   },
   {
     "user_id": "4",
-    "calendly": "https://calendly.com/hername",
+    "calendly": "https://calendly.com/mikeorr-developer/60min",
     "bio": "I was born in the desert, raised in the lion's den."
   }
 ]

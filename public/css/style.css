@@ -5,3 +5,11 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.card-text {
+  margin-bottom: 0%;
+}
+
+.card-div {
+  padding-top: 5%;
+}

@@ -1,29 +1,30 @@
 [
   {
-    "name": "Yoga"
+    "name": "Yoga",
+    "image": "yoga.jpeg"
   },
   {
-    "name": "Weight Training"
+    "name": "Weight Training",
+    "image": "weights.jpg"
   },
   {
-    "name": "Aerobics"
+    "name": "Aerobics",
+    "image": "aerobics.jpeg"
   },
   {
-    "name": "Pilates"
+    "name": "Pilates",
+    "image": "pilates.jpeg"
   },
   {
-    "name": "Kickboxing"
+    "name": "Kickboxing",
+    "image": "kickboxing.jpeg"
   },
   {
-    "name": "Karate"
+    "name": "Karate",
+    "image": "karate.jpeg"
   },
   {
-    "name": "Kung Fu"
-  },
-  {
-    "name": "Roll and Release"
-  },
-  {
-    "name": "Tae Kwon Do"
+    "name": "Kung Fu",
+    "image": "kungfu.jpeg"
   }
 ]
