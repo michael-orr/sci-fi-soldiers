@@ -161,7 +161,6 @@ Question.hasMany(PostQuestionAnswer, {
 });
 
 
-
 //one to many relationship with User(child) to Role(parent)
 User.belongsTo(Role, {
   foreignKey: 'role_id'

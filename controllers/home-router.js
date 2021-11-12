@@ -44,11 +44,6 @@ router.get("/login", (req, res) => {
   res.render("login", { title: "Log-In Page", layout:"centered.handlebars" });
 });
 
-router.get("/signup", (req, res) => {
-  res.render("signup", { title: "Sign-Up Page" });
-});
-
-
 //professional sign up page
 router.get("/professionalsignup", async (req, res) => {
   const servicesData = await Services.findAll();
@@ -165,13 +160,22 @@ router.get("/goals/:goal_id", withAuth, async (req, res) => {
         { model: GoalType, include: Question },
       ],
     });
+    let current_user;
+    if (req.session.isLoggedIn) {
+      current_user = await User.findByPk(req.session.userId, {
+        exclude: ["password"],
+        raw: true
+      });
+    }
 
     const goal = goalData.get({ plain: true });
     const currentWeight = goal.posts[0].post_question_answers[0].answer;
     const progressQuestions = goal.goal_type.questions.filter(
       (question) => question.question_type == "progress"
     );
-    res.render("goal", { goal, currentWeight, progressQuestions });
+    const current_user_id = req.session.userId;
+    console.log(current_user_id)
+    res.render("goal", { goal, currentWeight, progressQuestions, current_user_id });
   } catch (err) {
     res.status(500).json(err);
   }

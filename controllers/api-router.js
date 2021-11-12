@@ -178,10 +178,14 @@ router.post("/posts", withAuth, async (req, res) => {
 
 // POST 	/api/comments      	auth    adds a comment to a specific post
 router.post('/comments', withAuth, async (req, res) => {
-    try {
+  const { body } = req; 
+  console.log(body) 
+  try {
       const newComment = await Comment.create({
-        ...req.body,
-        userId: req.session.userId,
+        "body": body.body,
+        "post_id": body.post_id,
+        "user_id": body.user_id,
+        "date": body.date
       });
       console.log(newComment)
       res.json(newComment);
