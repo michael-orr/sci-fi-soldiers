@@ -11,9 +11,8 @@
                             class="rounded-circle">
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
-                        <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact"
-                            class="btn btn-success btn-block follow">Set a Goal With This Pro</button>
-                        <button class="btn btn-warning btn-block">Schedule A Session</button>
+                        <button id="calendlyButton" type="button" onclick="window.open('{{professional.calendly}}', '_blank')" class="btn btn-success btn-block follow">Schedule Session</button>
+                        <button id="returnButton" type="button" onclick="window.location.replace('/professionals')" class="btn btn-success btn-block follow">Return To List</button>
                     </div>
                 </div>
             </div>

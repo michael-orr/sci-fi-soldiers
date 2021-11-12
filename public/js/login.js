@@ -23,7 +23,14 @@ const handleLoginSubmit = async (event) => {
       return;
     }
 
-    window.location.replace('/');
+    const json = await response.json();
+
+    if (json.user.role_id === 2)
+    window.location.replace(`/client/${json.user.client.id}`);
+    
+    if (json.user.role_id === 1)
+    window.location.replace(`/professionals/${json.user.professional.id}`);
+
   } catch (error) {
     console.log(error);
   }

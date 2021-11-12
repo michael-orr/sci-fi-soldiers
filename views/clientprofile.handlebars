@@ -11,11 +11,11 @@
                             class="rounded-circle">
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1">
-                        <div class="row">
-                            <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact"
-                                class="btn btn-success btn-block follow">Set A New Goal</button>
+                        <div class="row new-goal-btn">
+                            <button id="newGoalButton" type="button" onclick="window.location.replace('/new-goal/{{client.id}}')" class="btn btn-success btn-block follow">Set A New Goal</button>
                         </div>
                         <div class="row profile-right-section-row">
+                            
                             <div class="col-md-12 profile-header">
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-xs-12 profile-header-section1 pull-left">

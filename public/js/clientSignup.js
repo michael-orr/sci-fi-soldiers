@@ -56,7 +56,7 @@ const handleSignupSubmit = async (event) => {
 
     if (response.ok) {
       const json = await response.json();
-      // window.location.replace(`/client/${json.client.id}`);
+      window.location.replace(`/client/${json.client.id}`);
       console.log(json)
     } else {
       alert('Failed to sign up.');

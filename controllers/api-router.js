@@ -99,7 +99,10 @@ router.post("/client-users", async (req, res) => {
 router.post("/users/login", async (req, res) => {
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ where: { username } });
+    const user = await User.findOne({ 
+      where: { username },
+      include: [Client, Professional]}
+      );
     if (!user) {
       throw new Error("User not found.");
     }
@@ -114,7 +117,8 @@ router.post("/users/login", async (req, res) => {
         console.error(err);
         return res.status(500).json({ message: "Internal server error." });
       }
-      res.json({ id: user.id });
+      console.log(JSON.stringify(user,null,2))
+      res.json({ user });
     });
   } catch (error) {
     console.error(error);
