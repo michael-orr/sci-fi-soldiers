@@ -27,12 +27,19 @@
     </form>
     {{/each}}
     <h3>Questions:</h3>
-    <form id="progress-post">
+    <form class="progress-form">
+        <input type="hidden" id="goal_id" value="{{goal.id}}">
+        <p>Goal ID: {{goal.id}}</p>
         {{#each progressQuestions}}
-        <p>{{question}}</p>
+        <div class="form-group mx-sm-3 mb-2">
+            <input type="hidden" class="form-control" id="question_id" value="{{id}}">
+            <label for="answer">{{question}}</label>
+            <input type="text" class="form-control" id="answer" placeholder="">    
+        </div>
         {{/each}}
-
+        <button type="submit" class="btn btn-primary mb-2">Post Your Progress</button>
     </form>
-</div>
+
 
 <script src="/js/comment.js"></script>
+<script src="/js/post.js"></script>

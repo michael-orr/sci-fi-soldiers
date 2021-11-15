@@ -1,4 +1,4 @@
-const { User, Goal, Comment, Post, Professional, ProfessionalServices, Services, Client, ClientServices } = require("../models");
+const { User, Goal, Comment, Post, Professional, ProfessionalServices, Services, Client, ClientServices, PostQuestionAnswer } = require("../models");
 const withAuth = require("../util/withAuth");
 
 const router = require("express").Router();
@@ -43,7 +43,7 @@ router.post("/pro-users", async (req, res) => {
     });
     services.push(service);
   };
-  console.log("THIS IS FROM API ROUTER",req.body)
+  
     req.session.isLoggedIn = true;
     req.session.userId = user.id;
     req.session.save((err) => {
@@ -117,7 +117,6 @@ router.post("/users/login", async (req, res) => {
         console.error(err);
         return res.status(500).json({ message: "Internal server error." });
       }
-      console.log(JSON.stringify(user,null,2))
       res.json({ user });
     });
   } catch (error) {
@@ -157,7 +156,6 @@ router.post("/goals", withAuth, async (req, res) => {
 router.get("/allgoals", withAuth, async (req, res) => {
     try {
     const allGoals = await Goal.findAll();
-    console.log(allGoals)
     res.json(allGoals);
   } catch (err) {
     res.status(500).json(err);
@@ -168,9 +166,19 @@ router.get("/allgoals", withAuth, async (req, res) => {
 // POST 	/api/posts		auth	creates a new post
 router.post("/posts", withAuth, async (req, res) => {
     const { body } = req;
+    console.log('BODY, logged from API-ROUTER:', body)
     try {
-      const newPost = await Post.create({ ...body, userId: req.session.userId });
-      res.json(newPost);
+      const newPost = await Post.create({ 
+        "date": body.date,
+        "goal_id": body.goal_id
+       });
+      console.log('NEW POST, logged from API-ROUTER:', newPost)
+      const newPostAnswer = await PostQuestionAnswer.create({
+        "post_id": newPost.id,
+        "question_id": body.question_id,
+        "answer": body.answer
+      })
+      res.json({newPost, newPostAnswer});
     } catch (err) {
       res.status(500).json(err);
     }
@@ -179,7 +187,6 @@ router.post("/posts", withAuth, async (req, res) => {
 // POST 	/api/comments      	auth    adds a comment to a specific post
 router.post('/comments', withAuth, async (req, res) => {
   const { body } = req; 
-  console.log(body) 
   try {
       const newComment = await Comment.create({
         "body": body.body,
@@ -187,7 +194,6 @@ router.post('/comments', withAuth, async (req, res) => {
         "user_id": body.user_id,
         "date": body.date
       });
-      console.log(newComment)
       res.json(newComment);
     } catch (err) {
       res.status(500).json(err);

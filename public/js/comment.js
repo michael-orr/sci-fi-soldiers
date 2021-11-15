@@ -5,6 +5,7 @@ const newCommentHandler = async (event) => {
   const post_id = document.querySelector("#post_id").value.trim();
   const user_id = document.querySelector("#user_id").value.trim();
   const comment_date = new Date();
+
   
   console.log(comment_body, post_id, user_id, comment_date)
   if (comment_body && post_id && user_id && comment_date) {

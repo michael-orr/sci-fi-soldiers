@@ -91,7 +91,6 @@ router.get("/dashboard/:prof_id", withAuth, async (req, res) => {
       ],
     });
     const professional = professionalData.get({ plain: true });
-    console.log("This is from HOME ROUTER", professional)
     res.render("dashboard", professional);
   } catch (err) {
     res.status(500).json(err);
@@ -108,7 +107,6 @@ router.get("/professionals/:prof_id", async (req, res) => {
       ],
     });
     const professional = professionalData.get({ plain: true });
-    console.log("This is from HOME ROUTER", professional)
     res.render("professionalprofile", { 
        professional,
        title: professional.user.username,
@@ -160,21 +158,13 @@ router.get("/goals/:goal_id", withAuth, async (req, res) => {
         { model: GoalType, include: Question },
       ],
     });
-    let current_user;
-    if (req.session.isLoggedIn) {
-      current_user = await User.findByPk(req.session.userId, {
-        exclude: ["password"],
-        raw: true
-      });
-    }
-
     const goal = goalData.get({ plain: true });
     const currentWeight = goal.posts[0].post_question_answers[0].answer;
     const progressQuestions = goal.goal_type.questions.filter(
       (question) => question.question_type == "progress"
     );
     const current_user_id = req.session.userId;
-    console.log(current_user_id)
+    console.log(goal, currentWeight, progressQuestions, current_user_id)
     res.render("goal", { goal, currentWeight, progressQuestions, current_user_id });
   } catch (err) {
     res.status(500).json(err);
